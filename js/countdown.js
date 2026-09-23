@@ -16,14 +16,14 @@
 
         // It's her birthday!
         if (now >= BIRTHDAY && now < BIRTHDAY_END) {
-            banner.innerHTML = '🎉🎂 Happy Birthday, Ashley Marie! 🎂🎉';
+            banner.textContent = "It's Ashley Marie's birthday today!";
             banner.style.background = 'linear-gradient(135deg, #FF7EB3, #FF5A95, #DDA0DD)';
             return;
         }
 
         // Birthday has passed
         if (now >= BIRTHDAY_END) {
-            banner.innerHTML = '💖 Hope you had the best birthday ever, Ashley! 💖';
+            banner.textContent = 'Hope you had the best birthday, Ashley.';
             return;
         }
 
@@ -35,11 +35,11 @@
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         if (days === 0) {
-            banner.innerHTML = `✨ Ashley's birthday is TODAY in ${hours}h ${minutes}m ${seconds}s! ✨`;
+            banner.textContent = hours + 'h ' + minutes + 'm ' + seconds + "s until Ashley's birthday";
         } else if (days === 1) {
-            banner.innerHTML = `🎀 Only 1 day until Ashley's special day! 🎀`;
+            banner.textContent = "1 day until Ashley's special day";
         } else {
-            banner.innerHTML = `✨ ${days} days, ${hours}h ${minutes}m until Ashley's birthday! ✨`;
+            banner.textContent = days + ' days, ' + hours + 'h ' + minutes + "m until Ashley's birthday";
         }
     }
 

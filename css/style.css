@@ -115,10 +115,35 @@ body {
 .balloon {
     position: absolute;
     bottom: -150px;
-    font-size: 3rem;
     opacity: 0.6;
     pointer-events: none;
     z-index: 1;
+}
+
+/* CSS Heart-shaped balloon */
+.balloon-heart {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-pink);
+    transform: rotate(-45deg);
+    position: relative;
+}
+.balloon-heart::before,
+.balloon-heart::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+    position: absolute;
+}
+.balloon-heart::before {
+    top: -10px;
+    left: 0;
+}
+.balloon-heart::after {
+    left: 10px;
+    top: 0;
 }
 
 /* === Sections === */
@@ -165,7 +190,7 @@ body {
     font-weight: 700;
     color: var(--text-secondary);
     margin-bottom: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .section-subtitle {
@@ -230,15 +255,13 @@ body {
     transform: translateY(-1px) scale(1.02);
 }
 
-.kawaii-btn .btn-sparkle {
-    animation: pulse 1.5s ease infinite;
-}
-
 .kawaii-btn.hidden {
     display: none;
 }
 
-/* === Envelope === */
+/* ==========================================
+   ENVELOPE — Redesigned for a realistic look
+   ========================================== */
 .envelope-wrapper {
     text-align: center;
     max-width: 600px;
@@ -247,68 +270,98 @@ body {
 
 .envelope {
     position: relative;
-    width: 280px;
-    height: 180px;
+    width: 300px;
+    height: 200px;
     margin: 0 auto 40px;
     cursor: pointer;
+    perspective: 800px;
 }
 
-.envelope-body {
+/* Back of the envelope */
+.envelope-back {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 140px;
-    background: linear-gradient(135deg, var(--accent-pink), #FFD1DC);
-    border-radius: 0 0 12px 12px;
-    box-shadow: var(--shadow-soft);
-    overflow: hidden;
-    z-index: 2;
+    height: 160px;
+    background: #F2C6D0;
+    border-radius: 0 0 8px 8px;
+    z-index: 1;
 }
 
+/* Front of the envelope (the bottom triangular fold) */
+.envelope-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid #F4A9BA;
+    border-radius: 0 0 8px 8px;
+    z-index: 3;
+}
+
+/* The flap (top triangle that opens) */
 .envelope-flap {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-top: 90px solid #FF9FB5;
-    z-index: 3;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #E8919E;
+    z-index: 4;
     transform-origin: top center;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.envelope.opened .envelope-flap {
-    transform: rotateX(180deg);
-    z-index: 1;
+/* Shadow under the flap */
+.envelope-flap::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -150px;
+    width: 300px;
+    height: 100px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.03) 100%);
 }
 
+/* Letter inside */
 .envelope-letter {
     position: absolute;
-    top: 20px;
-    left: 15%;
-    width: 70%;
-    height: 80%;
+    top: 30px;
+    left: 10%;
+    width: 80%;
+    height: 130px;
     background: white;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-handwritten);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.6s ease 0.3s;
-    z-index: 1;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+/* Opened state */
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 0;
 }
 
 .envelope.opened .envelope-letter {
-    transform: translateY(-60px);
+    transform: translateY(-80px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
-/* === Floating Hearts (Section 1) === */
+/* === Floating Hearts (CSS shapes, not emoji) === */
 .floating-hearts {
     position: absolute;
     top: 0;
@@ -320,19 +373,42 @@ body {
     z-index: 0;
 }
 
-.floating-hearts .heart {
+.heart-shape {
     position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.4;
+    width: 14px;
+    height: 14px;
+    background: var(--accent-pink);
+    transform: rotate(-45deg);
+    opacity: 0.25;
     animation: floatHeart 6s ease-in-out infinite;
 }
 
-.heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 7s; }
-.heart:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; animation-duration: 5s; }
-.heart:nth-child(3) { left: 50%; top: 30%; animation-delay: 2s; animation-duration: 8s; }
-.heart:nth-child(4) { left: 70%; top: 70%; animation-delay: 0.5s; animation-duration: 6s; }
-.heart:nth-child(5) { left: 85%; top: 15%; animation-delay: 1.5s; animation-duration: 7s; }
-.heart:nth-child(6) { left: 40%; top: 80%; animation-delay: 3s; animation-duration: 5.5s; }
+.heart-shape::before,
+.heart-shape::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: inherit;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart-shape::before {
+    top: -7px;
+    left: 0;
+}
+
+.heart-shape::after {
+    left: 7px;
+    top: 0;
+}
+
+.heart-shape:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 7s; background: var(--accent-pink); }
+.heart-shape:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; animation-duration: 5s; background: var(--accent-lilac); }
+.heart-shape:nth-child(3) { left: 50%; top: 30%; animation-delay: 2s; animation-duration: 8s; background: var(--accent-mint); }
+.heart-shape:nth-child(4) { left: 70%; top: 70%; animation-delay: 0.5s; animation-duration: 6s; background: var(--accent-peach); }
+.heart-shape:nth-child(5) { left: 85%; top: 15%; animation-delay: 1.5s; animation-duration: 7s; background: var(--accent-pink); }
+.heart-shape:nth-child(6) { left: 40%; top: 80%; animation-delay: 3s; animation-duration: 5.5s; background: var(--accent-lilac); }
 
 /* === Love Items === */
 .love-items-container {
@@ -353,6 +429,7 @@ body {
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
+    text-align: left;
 }
 
 .love-item.visible {
@@ -380,10 +457,15 @@ body {
     background: linear-gradient(90deg, var(--accent-lilac), var(--accent-peach), var(--accent-sky));
 }
 
-.love-emoji {
+.love-number {
     display: block;
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-pink);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    opacity: 0.7;
 }
 
 .love-item p {
@@ -585,18 +667,29 @@ body {
     }
 
     .envelope {
-        width: 220px;
-        height: 150px;
+        width: 240px;
+        height: 165px;
     }
 
-    .envelope-body {
-        height: 115px;
+    .envelope-back {
+        height: 130px;
+    }
+
+    .envelope-front {
+        border-left-width: 120px;
+        border-right-width: 120px;
+        border-bottom-width: 80px;
     }
 
     .envelope-flap {
-        border-left-width: 110px;
-        border-right-width: 110px;
-        border-top-width: 75px;
+        border-left-width: 120px;
+        border-right-width: 120px;
+        border-top-width: 80px;
+    }
+
+    .envelope-letter {
+        height: 105px;
+        top: 25px;
     }
 
     .love-items-container {
@@ -631,18 +724,30 @@ body {
     }
 
     .envelope {
-        width: 200px;
-        height: 130px;
+        width: 210px;
+        height: 145px;
     }
 
-    .envelope-body {
-        height: 100px;
+    .envelope-back {
+        height: 115px;
+    }
+
+    .envelope-front {
+        border-left-width: 105px;
+        border-right-width: 105px;
+        border-bottom-width: 70px;
     }
 
     .envelope-flap {
-        border-left-width: 100px;
-        border-right-width: 100px;
-        border-top-width: 65px;
+        border-left-width: 105px;
+        border-right-width: 105px;
+        border-top-width: 70px;
+    }
+
+    .envelope-letter {
+        height: 90px;
+        top: 20px;
+        font-size: 1rem;
     }
 
     #candles-row {

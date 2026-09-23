@@ -5,23 +5,32 @@
 (function () {
     'use strict';
 
-    // === Floating Balloons ===
+    // === Floating Balloons (CSS hearts instead of emoji) ===
     function createBalloons() {
         const container = document.getElementById('balloons-container');
         if (!container) return;
 
-        const balloonEmojis = ['🎈', '🎀', '🌸', '🎈', '💖', '🎈', '🌟', '🎈'];
+        const colors = ['#FFB6C1', '#DDA0DD', '#B5EAD7', '#FFDAB9', '#B4D7FF', '#FFB6C1', '#DDA0DD', '#FFB6C1'];
         const numBalloons = 8;
 
         for (let i = 0; i < numBalloons; i++) {
             const balloon = document.createElement('div');
             balloon.className = 'balloon';
-            balloon.textContent = balloonEmojis[i % balloonEmojis.length];
             balloon.style.left = Math.random() * 90 + 5 + '%';
-            balloon.style.animationDuration = (Math.random() * 10 + 12) + 's';
-            balloon.style.animationDelay = (Math.random() * 15) + 's';
-            balloon.style.fontSize = (Math.random() * 1.5 + 2) + 'rem';
-            balloon.style.animation = `floatUp ${Math.random() * 10 + 12}s linear ${Math.random() * 15}s infinite`;
+
+            // Create a CSS heart shape
+            const heart = document.createElement('div');
+            heart.className = 'balloon-heart';
+            heart.style.background = colors[i % colors.length];
+            const size = Math.random() * 10 + 14;
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+
+            // Update pseudo-element sizes via CSS custom property
+            heart.style.setProperty('--size', size + 'px');
+
+            balloon.appendChild(heart);
+            balloon.style.animation = 'floatUp ' + (Math.random() * 10 + 12) + 's linear ' + (Math.random() * 15) + 's infinite';
             container.appendChild(balloon);
         }
     }
@@ -63,7 +72,6 @@
             entries.forEach(function (entry) {
                 if (entry.isIntersecting && !typewriterStarted) {
                     typewriterStarted = true;
-                    // Call the global function from typewriter.js
                     if (typeof window.startTypewriter === 'function') {
                         setTimeout(window.startTypewriter, 500);
                     }
@@ -105,53 +113,12 @@
         }
     }
 
-    // === Easter Egg: Konami Code ===
-    function setupEasterEgg() {
-        const konamiCode = [
-            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-            'KeyB', 'KeyA'
-        ];
-        let konamiIndex = 0;
-
-        document.addEventListener('keydown', function (e) {
-            if (e.code === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    konamiIndex = 0;
-                    // Super confetti explosion!
-                    if (typeof confetti === 'function') {
-                        for (let i = 0; i < 5; i++) {
-                            setTimeout(function () {
-                                confetti({
-                                    particleCount: 100,
-                                    spread: 160,
-                                    origin: { x: Math.random(), y: Math.random() * 0.5 },
-                                    colors: ['#FFB6C1', '#DDA0DD', '#B5EAD7', '#FFD700', '#FF7EB3']
-                                });
-                            }, i * 200);
-                        }
-                    }
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
-    }
-
     // === Initialize Everything ===
     function init() {
         createBalloons();
         setupScrollReveal();
         setupTypewriterTrigger();
         setupSectionAnimations();
-        setupEasterEgg();
-
-        // Log a cute message to console
-        console.log('%c💖 Happy Birthday, Ashley Marie! 💖', 
-            'color: #E91E63; font-size: 24px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);');
-        console.log('%cMade with love 💝', 
-            'color: #FF7EB3; font-size: 14px;');
     }
 
     // Run when DOM is ready

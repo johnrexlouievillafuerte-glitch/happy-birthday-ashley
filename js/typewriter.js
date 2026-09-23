@@ -11,17 +11,17 @@
 
     if (!wishLetter) return;
 
-    const MESSAGE = `My Dearest Ashley Marie,
+    const MESSAGE = `Ashley,
 
-On this beautiful day, I want you to know just how much you mean to me. You are the reason I smile every morning and the last thought on my mind every night.
+I've been trying to figure out the right words for this, and honestly, I don't think there are any that are good enough. But I'm gonna try anyway.
 
-Every day with you feels like a gift I never knew I deserved. You've taught me what it means to truly love someone — with your patience, your warmth, and your beautiful heart.
+You showed up in my life and somehow made everything make more sense. The days feel different with you in them — better, warmer, like they actually matter.
 
-I promise to always be your biggest cheerleader, your shoulder to lean on, and your partner in every adventure life brings us.
+I know I don't always say it the way I should, or as often as you deserve to hear it. But you are the best thing that's ever happened to me. Not in a cheesy, movie kind of way. In the real, everyday, I-can't-imagine-doing-this-without-you kind of way.
 
-Happy Birthday, my love. You deserve all the happiness in the world — and I'll spend every day trying to give you exactly that.
+So happy birthday, Ash. I hope this year gives you everything you've been wishing for. And if it doesn't, I'll be right here trying to make up the difference.
 
-Forever and always yours 💝`;
+Always yours.`;
 
     let charIndex = 0;
     let isTyping = false;
