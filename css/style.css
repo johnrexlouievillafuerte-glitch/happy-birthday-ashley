@@ -1,0 +1,656 @@
+/* ========================================
+   STYLE.CSS — Core Layout, Typography, Colors
+   Kawaii Pastel Theme for Ashley's Birthday
+   ======================================== */
+
+/* === CSS Variables === */
+:root {
+    --bg-primary: #FFF0F5;
+    --bg-secondary: #F0E6FF;
+    --bg-tertiary: #FFF5F9;
+    --accent-pink: #FFB6C1;
+    --accent-lilac: #DDA0DD;
+    --accent-mint: #B5EAD7;
+    --accent-peach: #FFDAB9;
+    --accent-sky: #B4D7FF;
+    --text-primary: #5D4037;
+    --text-secondary: #E91E63;
+    --text-light: #8D6E63;
+    --card-bg: #FFFFFF;
+    --btn-primary: #FF7EB3;
+    --btn-hover: #FF5A95;
+    --shadow-soft: 0 4px 20px rgba(255, 126, 179, 0.2);
+    --shadow-medium: 0 8px 30px rgba(255, 126, 179, 0.3);
+    --border-radius: 20px;
+    --font-main: 'Quicksand', sans-serif;
+    --font-handwritten: 'Patrick Hand', cursive;
+}
+
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* === Scrollbar Styling === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-pink);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--btn-primary);
+}
+
+/* === Countdown Banner === */
+#countdown-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--btn-primary), var(--accent-lilac));
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(255, 126, 179, 0.4);
+    font-family: var(--font-main);
+}
+
+#countdown-banner:empty {
+    display: none;
+}
+
+/* === Sparkle Canvas === */
+#sparkle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* === Balloons === */
+#balloons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    font-size: 3rem;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* === Sections === */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 80px 20px 40px;
+}
+
+#envelope-section {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+#card-section {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+#love-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #FFF5EE 50%, var(--bg-secondary) 100%);
+}
+
+#wishes-section {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 50%, #FFF5F9 100%);
+}
+
+.section-content {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* === Typography === */
+.section-title {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    font-family: var(--font-handwritten);
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.greeting-text {
+    font-family: var(--font-main);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(233, 30, 99, 0.15);
+}
+
+/* === Kawaii Button === */
+.kawaii-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, var(--btn-primary), var(--accent-lilac));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.kawaii-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.kawaii-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 126, 179, 0.4);
+}
+
+.kawaii-btn:hover::before {
+    transform: scale(1);
+}
+
+.kawaii-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.kawaii-btn .btn-sparkle {
+    animation: pulse 1.5s ease infinite;
+}
+
+.kawaii-btn.hidden {
+    display: none;
+}
+
+/* === Envelope === */
+.envelope-wrapper {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    margin: 0 auto 40px;
+    cursor: pointer;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(135deg, var(--accent-pink), #FFD1DC);
+    border-radius: 0 0 12px 12px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 90px solid #FF9FB5;
+    z-index: 3;
+    transform-origin: top center;
+    transition: transform 0.6s ease;
+}
+
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-letter {
+    position: absolute;
+    top: 20px;
+    left: 15%;
+    width: 70%;
+    height: 80%;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease 0.3s;
+    z-index: 1;
+}
+
+.envelope.opened .envelope-letter {
+    transform: translateY(-60px);
+}
+
+/* === Floating Hearts (Section 1) === */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-hearts .heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    animation: floatHeart 6s ease-in-out infinite;
+}
+
+.heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 7s; }
+.heart:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; animation-duration: 5s; }
+.heart:nth-child(3) { left: 50%; top: 30%; animation-delay: 2s; animation-duration: 8s; }
+.heart:nth-child(4) { left: 70%; top: 70%; animation-delay: 0.5s; animation-duration: 6s; }
+.heart:nth-child(5) { left: 85%; top: 15%; animation-delay: 1.5s; animation-duration: 7s; }
+.heart:nth-child(6) { left: 40%; top: 80%; animation-delay: 3s; animation-duration: 5.5s; }
+
+/* === Love Items === */
+.love-items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.love-item {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.love-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.love-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-pink);
+}
+
+.love-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-lilac), var(--accent-mint));
+}
+
+.love-item:nth-child(even)::before {
+    background: linear-gradient(90deg, var(--accent-lilac), var(--accent-peach), var(--accent-sky));
+}
+
+.love-emoji {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.love-item p {
+    font-family: var(--font-handwritten);
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* === Wish Letter === */
+.wish-letter-container {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 40px 35px;
+    margin: 30px auto;
+    max-width: 650px;
+    box-shadow: var(--shadow-soft);
+    min-height: 200px;
+    text-align: left;
+    position: relative;
+    border: 2px solid var(--accent-pink);
+}
+
+#wish-letter {
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+}
+
+#typewriter-cursor {
+    font-weight: 700;
+    color: var(--text-secondary);
+    animation: blink 0.8s step-end infinite;
+    font-size: 1.3rem;
+}
+
+/* === Candles === */
+#candles-container {
+    margin-top: 40px;
+}
+
+#candles-container.hidden {
+    display: none;
+}
+
+.candles-instruction {
+    font-family: var(--font-handwritten);
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+#candles-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.candle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.candle-wrapper:hover {
+    transform: scale(1.1);
+}
+
+.candle {
+    width: 20px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-lilac));
+    border-radius: 4px 4px 2px 2px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(255, 126, 179, 0.3);
+}
+
+.candle-stripe {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-50%);
+}
+
+.flame {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(ellipse at bottom, #FFC107 0%, #FF9800 40%, #FF5722 70%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.3s ease-in-out infinite alternate;
+    transition: opacity 0.3s ease;
+}
+
+.flame::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #42A5F5;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.flame.blown-out {
+    opacity: 0;
+    animation: none;
+}
+
+.smoke {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 0;
+    background: rgba(200, 200, 200, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.smoke.visible {
+    height: 20px;
+    opacity: 0.6;
+    top: -50px;
+}
+
+/* === Fireworks Message === */
+#fireworks-message {
+    padding: 30px;
+    animation: fadeInUp 1s ease;
+}
+
+#fireworks-message.hidden {
+    display: none;
+}
+
+#fireworks-message h2 {
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+#fireworks-message p {
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+/* === Footer === */
+.site-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+    color: var(--text-light);
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+}
+
+.footer-year {
+    margin-top: 5px;
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+/* === Utility === */
+.hidden {
+    display: none !important;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .section {
+        padding: 70px 15px 30px;
+    }
+
+    .greeting-text {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .envelope {
+        width: 220px;
+        height: 150px;
+    }
+
+    .envelope-body {
+        height: 115px;
+    }
+
+    .envelope-flap {
+        border-left-width: 110px;
+        border-right-width: 110px;
+        border-top-width: 75px;
+    }
+
+    .love-items-container {
+        grid-template-columns: 1fr;
+    }
+
+    .wish-letter-container {
+        padding: 25px 20px;
+    }
+
+    #wish-letter {
+        font-size: 1.05rem;
+    }
+
+    .kawaii-btn {
+        padding: 14px 30px;
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting-text {
+        font-size: 1.25rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .envelope {
+        width: 200px;
+        height: 130px;
+    }
+
+    .envelope-body {
+        height: 100px;
+    }
+
+    .envelope-flap {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-top-width: 65px;
+    }
+
+    #candles-row {
+        gap: 12px;
+    }
+
+    .candle {
+        width: 16px;
+        height: 48px;
+    }
+}

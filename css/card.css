@@ -1,0 +1,290 @@
+/* ========================================
+   CARD.CSS — Birthday Card 3D Flip Styles
+   ======================================== */
+
+/* === Card Container (Perspective) === */
+.card-container {
+    perspective: 1200px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* === The Card === */
+.birthday-card {
+    width: 340px;
+    height: 460px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+}
+
+.birthday-card.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* === Card Faces === */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(255, 126, 179, 0.25);
+}
+
+/* === Card Front === */
+.card-front {
+    background: linear-gradient(180deg, #FFF5F9 0%, #FFE8F0 30%, #FFF0F5 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 3px solid var(--accent-pink);
+}
+
+.card-front::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed rgba(255, 182, 193, 0.4);
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+.card-title {
+    font-family: var(--font-main);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 20px;
+    text-shadow: 0 2px 8px rgba(233, 30, 99, 0.15);
+}
+
+.card-hint {
+    font-family: var(--font-handwritten);
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 15px;
+    animation: pulse 2s ease infinite;
+}
+
+/* === Card Inside === */
+.card-inside {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8FC 100%);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 35px 30px;
+    border: 3px solid var(--accent-lilac);
+}
+
+.card-inside::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed rgba(221, 160, 221, 0.3);
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+.card-message {
+    text-align: left;
+}
+
+.card-message h3 {
+    font-family: var(--font-handwritten);
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.card-message p {
+    font-family: var(--font-handwritten);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.card-signature {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.card-signature .signature {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+
+.card-close-hint {
+    font-family: var(--font-handwritten);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 10px;
+    text-align: center;
+    animation: pulse 2s ease infinite;
+}
+
+/* === Kawaii Cake (CSS Art) === */
+.kawaii-cake {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Candle Row on Cake */
+.candle-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2px;
+    justify-content: center;
+}
+
+.mini-candle {
+    width: 8px;
+    height: 28px;
+    background: linear-gradient(180deg, var(--accent-sky), var(--accent-lilac));
+    border-radius: 2px 2px 0 0;
+    position: relative;
+}
+
+.mini-flame {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 12px;
+    background: radial-gradient(ellipse at bottom, #FFD700 0%, #FF9800 50%, #FF5722 80%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.4s ease-in-out infinite alternate;
+}
+
+/* Cake Layers */
+.cake-layer {
+    border-radius: 12px 12px 4px 4px;
+    position: relative;
+}
+
+.cake-top {
+    width: 100px;
+    height: 35px;
+    background: linear-gradient(180deg, #FFB6C1 0%, #FF9FB5 100%);
+    z-index: 3;
+}
+
+/* Frosting drips on top layer */
+.cake-top::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 10%;
+    width: 80%;
+    height: 12px;
+    background: radial-gradient(ellipse at top, #FFFFFF 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    border-radius: 0 0 50% 50%;
+}
+
+.cake-middle {
+    width: 130px;
+    height: 38px;
+    background: linear-gradient(180deg, #DDA0DD 0%, #CC8FCC 100%);
+    margin-top: -2px;
+    z-index: 2;
+}
+
+.cake-middle::before {
+    content: '• • • • • •';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 3px;
+}
+
+.cake-middle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 8%;
+    width: 84%;
+    height: 10px;
+    background: radial-gradient(ellipse at top, #FFB6C1 0%, rgba(255,182,193,0.5) 50%, transparent 100%);
+    border-radius: 0 0 50% 50%;
+}
+
+.cake-bottom {
+    width: 160px;
+    height: 42px;
+    background: linear-gradient(180deg, #B5EAD7 0%, #9EDBC8 100%);
+    margin-top: -2px;
+    z-index: 1;
+}
+
+.cake-bottom::before {
+    content: '♡ ♡ ♡ ♡ ♡';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 4px;
+}
+
+.cake-plate {
+    width: 180px;
+    height: 12px;
+    background: linear-gradient(180deg, #f0f0f0, #e0e0e0);
+    border-radius: 0 0 6px 6px;
+    margin-top: 1px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* === Responsive Card === */
+@media (max-width: 480px) {
+    .birthday-card {
+        width: 280px;
+        height: 400px;
+    }
+
+    .card-front {
+        padding: 20px;
+    }
+
+    .card-inside {
+        padding: 25px 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-message h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-message p {
+        font-size: 0.95rem;
+    }
+
+    .cake-top { width: 80px; height: 28px; }
+    .cake-middle { width: 105px; height: 32px; }
+    .cake-bottom { width: 130px; height: 36px; }
+    .cake-plate { width: 145px; height: 10px; }
+}

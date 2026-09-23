@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ashley! 🎂</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+    <!-- Countdown Banner -->
+    <div id="countdown-banner"></div>
+
+    <!-- Sparkle Canvas Overlay -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Floating Balloons Container -->
+    <div id="balloons-container"></div>
+
+    <!-- ===== SECTION 1: ENVELOPE ===== -->
+    <section id="envelope-section" class="section">
+        <div class="section-content envelope-wrapper">
+            <div class="floating-hearts">
+                <span class="heart">💖</span>
+                <span class="heart">💗</span>
+                <span class="heart">💕</span>
+                <span class="heart">💓</span>
+                <span class="heart">💖</span>
+                <span class="heart">💗</span>
+            </div>
+
+            <h1 class="greeting-text">
+                You've received a special letter, Ashley! 💌
+            </h1>
+
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="envelope-letter">
+                        <p>For someone<br>very special... 💝</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="open-btn" class="kawaii-btn">
+                <span class="btn-text">Open Me! 💝</span>
+                <span class="btn-sparkle">✨</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: BIRTHDAY CARD ===== -->
+    <section id="card-section" class="section">
+        <div class="section-content">
+            <h2 class="section-title">A Card Just For You 🎀</h2>
+
+            <div class="card-container">
+                <div class="birthday-card" id="birthday-card">
+                    <!-- Card Front -->
+                    <div class="card-face card-front">
+                        <div class="kawaii-cake">
+                            <div class="candle-row">
+                                <div class="mini-candle"><div class="mini-flame"></div></div>
+                                <div class="mini-candle"><div class="mini-flame"></div></div>
+                                <div class="mini-candle"><div class="mini-flame"></div></div>
+                            </div>
+                            <div class="cake-layer cake-top"></div>
+                            <div class="cake-layer cake-middle"></div>
+                            <div class="cake-layer cake-bottom"></div>
+                            <div class="cake-plate"></div>
+                        </div>
+                        <h2 class="card-title">Happy Birthday! 🎂</h2>
+                        <p class="card-hint">✨ Click to open ✨</p>
+                    </div>
+
+                    <!-- Card Inside -->
+                    <div class="card-face card-inside">
+                        <div class="card-message">
+                            <h3>Dear Ashley Marie, 💕</h3>
+                            <p>
+                                Today is all about celebrating the most wonderful person I know — you!
+                                Every moment with you is a gift, and I'm so grateful that I get to be
+                                part of your story.
+                            </p>
+                            <p>
+                                You make the world brighter just by being in it. Your laugh is my
+                                favorite sound, your smile is my favorite sight, and your heart is
+                                my favorite place to call home.
+                            </p>
+                            <p>
+                                Happy Birthday, my love! Here's to another year of making beautiful
+                                memories together. 🎂✨
+                            </p>
+                            <p class="card-signature">
+                                With all my love,<br>
+                                <span class="signature">Forever yours 💝</span>
+                            </p>
+                        </div>
+                        <p class="card-close-hint">✨ Click to close ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: THINGS I LOVE ===== -->
+    <section id="love-section" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Things I Love About You 💕</h2>
+            <p class="section-subtitle">Every little thing that makes you, you ✨</p>
+
+            <div class="love-items-container">
+                <div class="love-item" data-index="0">
+                    <span class="love-emoji">🌟</span>
+                    <p>The way your eyes light up when you talk about things you love</p>
+                </div>
+                <div class="love-item" data-index="1">
+                    <span class="love-emoji">💖</span>
+                    <p>Your incredible kindness that touches everyone around you</p>
+                </div>
+                <div class="love-item" data-index="2">
+                    <span class="love-emoji">😊</span>
+                    <p>Your smile — it's the most beautiful thing in the world</p>
+                </div>
+                <div class="love-item" data-index="3">
+                    <span class="love-emoji">💪</span>
+                    <p>How strong and brave you are, even when things get tough</p>
+                </div>
+                <div class="love-item" data-index="4">
+                    <span class="love-emoji">🎵</span>
+                    <p>Your laugh — it's my absolute favorite sound</p>
+                </div>
+                <div class="love-item" data-index="5">
+                    <span class="love-emoji">🤗</span>
+                    <p>The warm hugs that make everything feel okay</p>
+                </div>
+                <div class="love-item" data-index="6">
+                    <span class="love-emoji">✨</span>
+                    <p>Your passion and the way you pour your heart into everything</p>
+                </div>
+                <div class="love-item" data-index="7">
+                    <span class="love-emoji">🌈</span>
+                    <p>How you make even ordinary days feel magical</p>
+                </div>
+                <div class="love-item" data-index="8">
+                    <span class="love-emoji">💫</span>
+                    <p>Your silliness — the goofy moments that are just ours</p>
+                </div>
+                <div class="love-item" data-index="9">
+                    <span class="love-emoji">💝</span>
+                    <p>Simply everything about you — you are my whole heart</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: BIRTHDAY WISHES ===== -->
+    <section id="wishes-section" class="section">
+        <div class="section-content">
+            <h2 class="section-title">My Birthday Wish For You 🌟</h2>
+
+            <div class="wish-letter-container">
+                <div class="wish-letter" id="wish-letter"></div>
+                <span class="typewriter-cursor" id="typewriter-cursor">|</span>
+            </div>
+
+            <button id="wish-btn" class="kawaii-btn hidden">
+                <span class="btn-text">Make a Wish 🌟</span>
+                <span class="btn-sparkle">✨</span>
+            </button>
+
+            <div id="candles-container" class="hidden">
+                <p class="candles-instruction">🕯️ Click each candle to blow it out! 🕯️</p>
+                <div id="candles-row"></div>
+                <div id="fireworks-message" class="hidden">
+                    <h2>🎉 Happy Birthday, Ashley! 🎉</h2>
+                    <p>May all your wishes come true! 💖</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Made with 💖 just for you, Ashley Marie</p>
+        <p class="footer-year">🎂 October 29, 2026 🎂</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/sparkles.js"></script>
+    <script src="js/envelope.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/typewriter.js"></script>
+    <script src="js/candles.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
